@@ -18,7 +18,6 @@ The final product would look like below images:
 
 !["Final Product2"](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/268/100-index.png)
 
-!["Live Video"](https://www.youtube.com/watch?v=m-cfupVumos)
 
 ## Concepts to learn from doing this project
 
@@ -30,6 +29,6 @@ The final product would look like below images:
     More coming soon!
 
 
-## AUTHORS:
+## Awesome AUTHORS:
 ### Mahdi Zaabi
 ### Andrew Godwin
