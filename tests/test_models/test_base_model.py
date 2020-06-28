@@ -28,3 +28,14 @@ class TestBaseModel(unittest.TestCase):
             os.remove("file.json")
         except:
             pass
+
+def test_init_with_insufficient_args(self):
+        with self.assertRaises(Exception):
+            base0 = BaseModel(number=89)
+
+    def test_init_with_sufficient_args(self):
+        self.assertEqual(self.base1.number, 89)
+        self.assertEqual(self.base1.created_at,
+                         datetime.datetime(2020, 06, 28T01, 25, 18, 335269))
+        self.assertEqual(self.base1.updated_at,
+                         datetime.datetime(2020, 06, 28T01, 25, 18, 335279))
