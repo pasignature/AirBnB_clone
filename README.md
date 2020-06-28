@@ -26,7 +26,14 @@ The final product would look like below images:
     Serialization/Deserialization
     *args, **kwargs
     datetime
-    More coming soon!
+
+##    how to start and use it
+	  1. interactive mode: 
+	  ./console.py
+	  
+	  2. non-interactive mode: 
+	  echo "help" | ./console.py
+
 
 
 ## Awesome AUTHORS:
