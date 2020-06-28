@@ -21,7 +21,7 @@ The final product would look like below images:
 
 ## Concepts to learn from doing this project
 
-    Unittest - and please work all together on tests cases
+    Unittest - and please work all together on tests cases.
     Python packages
     Serialization/Deserialization
     *args, **kwargs
