@@ -50,7 +50,8 @@ class FileStorage():
                 lo = json.load(fx)
             for x in lo.keys():
             #if x.split('.')[0] in FileStorage.strx:
-                self.__objects[x] = FileStorage.cll[FileStorage.strx.index(x.split('.')[0])](**lo[x])
+                o = FileStorage.strx.index(x.split('.')[0])
+                self.__objects[x] = FileStorage.cll[o](**lo[x])
                 #self.__objects[x] = BaseModel(**lo[x])
 
         except FileNotFoundError:
