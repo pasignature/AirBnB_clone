@@ -3,6 +3,7 @@
 FileStorage class file
 """
 from models.base_model import BaseModel
+from models.user import User
 import json
 import models
 
@@ -13,6 +14,9 @@ class FileStorage():
     path = "file.json"
     __file_path = path
     __objects = {}
+    kryptix = ''
+    cll = [BaseModel, User]
+    strx = ['BaseModel', 'User']
 
     def all(self):
         """returns the dictionary __objects"""
@@ -25,6 +29,7 @@ class FileStorage():
         if obj is not None:
             keyx = obj.__class__.__name__ + "." + obj.id
             self.__objects[keyx] = obj
+            FileStorage.kryptix = obj.__class__.__name__
 
     def save(self):
         """serializes objects to the JSON file"""
@@ -44,7 +49,8 @@ class FileStorage():
             with open(self.__file_path, 'r') as fx:
                 lo = json.load(fx)
             for x in lo.keys():
-                self.__objects[x] = BaseModel(**lo[x])
+                #if x.split('.')[0] in FileStorage.strx:
+                self.__objects[x] = FileStorage.cll[FileStorage.strx.index(x.split('.')[0])](**lo[x])
 
         except FileNotFoundError:
             pass
