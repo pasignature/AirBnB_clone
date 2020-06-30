@@ -42,6 +42,6 @@ class BaseModel:
         """return a dictionnary representation of the class"""
         d = self.__dict__.copy()
         d['__class__'] = self.__class__.__name__
-        d['created_at'] = d['created_at'].isoformat()
-        d['updated_at'] = d['updated_at'].isoformat()
+        d['created_at'] = self.created_at.isoformat()
+        d['updated_at'] = self.updated_at.isoformat()
         return d
