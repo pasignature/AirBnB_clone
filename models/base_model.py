@@ -27,7 +27,7 @@ class BaseModel:
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
             models.storage.new(self)
-            #models.storage.save()
+            models.storage.save()
 
     def __str__(self):
         """string readable representation of the instance"""
