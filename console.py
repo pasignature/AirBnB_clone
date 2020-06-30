@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-The console: contains the entry point of the command interpreter
+BETA VERSION The console: contains the entry point of the command interpreter
 """
 
 import cmd
@@ -118,6 +118,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_EOF(self, line):
         """End of file"""
+        print("ok bye!")
 
         return True
 
