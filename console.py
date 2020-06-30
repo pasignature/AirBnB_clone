@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-BETA VERSION The console: contains the entry point of the command interpreter
+The console: contains the entry point of the command interpreter
 """
 
 import cmd
@@ -89,7 +89,6 @@ class HBNBCommand(cmd.Cmd):
         else:
             for k in models.storage.all().keys():
                 l.append(models.storage.all()[k])
-                
         if l:
             print([str(item) for item in l])
         l.clear()
@@ -119,13 +118,8 @@ class HBNBCommand(cmd.Cmd):
 
     def do_EOF(self, line):
         """End of file"""
-        print("ok bye!")
 
         return True
-
-    def do_now(self, line):
-        """execute command now"""
-        print("################")
 
     def do_quit(self, line):
         """ quit the programe !!!"""
