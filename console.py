@@ -13,7 +13,7 @@ import json
 class HBNBCommand(cmd.Cmd):
     """Simple command processor example."""
 
-    intro = 'Welcome to the Airbnb console\n'
+    #intro = 'Welcome to the Airbnb console\n'
     prompt = '(hbnb)'
     cstr = ['BaseModel', 'User']
     csob = [BaseModel, User]
@@ -125,6 +125,10 @@ class HBNBCommand(cmd.Cmd):
         """Quit command to exit the program"""
 
         return True
+
+    def emptyline(self):
+        """ overwriting the emptyline method """
+        return False
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
