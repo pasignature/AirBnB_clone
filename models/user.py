@@ -14,9 +14,9 @@ class User(BaseModel):
     first_name = ''
     last_name = ''
 
-    """def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         """a class constructor"""
 
-        """super().__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         models.storage.new(self)
-        models.storage.save()"""
+        models.storage.save()
