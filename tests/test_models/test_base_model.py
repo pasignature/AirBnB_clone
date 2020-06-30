@@ -29,7 +29,7 @@ class TestBaseModel(unittest.TestCase):
         except:
             pass
 
-def test_init_with_insufficient_args(self):
+    def test_init_with_insufficient_args(self):
         with self.assertRaises(Exception):
             base0 = BaseModel(number=89)
 
