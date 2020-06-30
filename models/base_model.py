@@ -10,9 +10,6 @@ import models
 
 class BaseModel:
     """BaseModel that defines all common attr/methods for other classes:"""
-    @classmethod
-    def getclsname(cls):
-        return cls.__name__
 
     def __init__(self, *args, **kwargs):
         """instance constructor and instance instantiation"""
@@ -28,9 +25,9 @@ class BaseModel:
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
-            self.updated_at = self.created_at
+            self.updated_at = datetime.now()
             models.storage.new(self)
-            models.storage.save()
+            #models.storage.save()
 
     def __str__(self):
         """string readable representation of the instance"""
