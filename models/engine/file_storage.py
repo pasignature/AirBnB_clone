@@ -11,7 +11,15 @@ classes = {"BaseModel": BaseModel, "User": User}
 
 
 class FileStorage():
-    """class that serializes\deserialize instances to a JSON """
+    """
+    ------------------
+    CLASS: FileStorage
+    ------------------
+    """
+
+    # ------------------------------- #
+    #       PUBLIC ATTRIBUTES         #
+    # ------------------------------- #
 
     #path to the Json file
     __file_path = 'file.json'
@@ -19,19 +27,48 @@ class FileStorage():
     __objects = {}
 
     def all(self):
-        """returns the dictionary __objects"""
+        """
+        ---------------------------
+        PUBLIC INSTANCE METHOD: ALL
+        ---------------------------
+        DESCRIPTION:
+            Returns the dictionary stored in
+            the attribute '__objects'
+        ARGS:
+            @self: current instance
+        """
 
         return self.__objects
 
     def new(self, obj):
-        """sets in __objects the obj with key"""
+        """
+        ---------------------------
+        PUBLIC INSTANCE METHOD: NEW
+        ---------------------------
+        DESCRIPTION:
+            Adds the necessary objects to the
+            '__objects' attribute
+        ARGS:
+            @self: current instance
+            @obj: object to add to '__objects'
+        """
 
         if obj is not None:
             keyx = obj.__class__.__name__ + "." + obj.id
             self.__objects[keyx] = obj
 
     def save(self):
-        """serializes objects to the JSON file"""
+        """
+        ----------------------------
+        PUBLIC INSTANCE METHOD: SAVE
+        ----------------------------
+        DESCRIPTION:
+            Serializes items in __objects to JSON
+            and dumps the output into a file defined
+            by '__file_path'
+        ARGS:
+            @self: current instance
+        """
 
         json_objects = {}
 
@@ -42,7 +79,16 @@ class FileStorage():
             json.dump(json_objects, filex)
 
     def reload(self):
-        """ reload the saved instances"""
+        """
+        ------------------------------
+        PUBLIC INSTANCE METHOD: RELOAD
+        ------------------------------
+        DESCRIPTION:
+            Deserializes a JSON file, loads up
+            and loads up all of the instances
+            found in the file into the attribute
+            '__objects'
+        """
 
         try:
             with open(self.__file_path, 'r') as fx:
