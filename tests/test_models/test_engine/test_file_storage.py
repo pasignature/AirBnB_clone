@@ -1,4 +1,16 @@
-#!/usr/bin/python3
+#!usr/bin/python3
 """
-folder for TestFileStorageDocs classes
+base model test
 """
+import unittest
+
+
+class TestBaseModel(unittest.TestCase):
+    """
+    base model test
+    """
+    pass
+
+
+if __name__ == '__main__':
+    unittest.main()
