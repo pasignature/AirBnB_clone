@@ -7,6 +7,7 @@ from models.user import User
 import json
 import models
 
+classes = {"BaseModel": BaseModel, "User": User}
 
 class FileStorage():
     """class that serializes\deserialize instances to a JSON """
@@ -15,8 +16,6 @@ class FileStorage():
     __file_path = path
     __objects = {}
     kryptix = ''
-    cll = [BaseModel, User]
-    strx = ['BaseModel', 'User']
 
     def all(self):
         """returns the dictionary __objects"""
@@ -29,7 +28,6 @@ class FileStorage():
         if obj is not None:
             keyx = obj.__class__.__name__ + "." + obj.id
             self.__objects[keyx] = obj
-            FileStorage.kryptix = obj.__class__.__name__
 
     def save(self):
         """serializes objects to the JSON file"""
@@ -47,12 +45,10 @@ class FileStorage():
 
         try:
             with open(self.__file_path, 'r') as fx:
-                lo = json.load(fx)
-            for x in lo.keys():
-            #if x.split('.')[0] in FileStorage.strx:
-                o = FileStorage.strx.index(x.split('.')[0])
-                self.__objects[x] = FileStorage.cll[o](**lo[x])
-                #self.__objects[x] = BaseModel(**lo[x])
+                d = json.load(fx)
+
+            for x in d.keys():
+                self.__objects[x] = classes[d[x]["__class__"]](**d[x])
 
         except FileNotFoundError:
             pass
