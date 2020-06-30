@@ -15,6 +15,7 @@ import unittest
 FileStorage = file_storage.FileStorage
 classes = {"BaseModel": BaseModel, "User": User}
 
+
 class TestFileStorage(unittest.TestCase):
     """Test the FileStorage class"""
     def test_all_returns_dict(self):
