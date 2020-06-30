@@ -16,6 +16,15 @@ FileStorage = file_storage.FileStorage
 classes = {"BaseModel": BaseModel, "User": User}
 
 
+class TestBaseModelDocs(unittest.TestCase):
+    """Tests to check the documentation and style of BaseModel class"""
+
+    @classmethod
+    def setUpClass(self):
+        """Set up for docstring tests"""
+        self.base_funcs = inspect.getmembers(BaseModel, inspect.isfunction)
+
+
 class TestFileStorage(unittest.TestCase):
     """Test the FileStorage class"""
     def test_all_returns_dict(self):
