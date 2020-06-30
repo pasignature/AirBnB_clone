@@ -13,10 +13,8 @@ classes = {"BaseModel": BaseModel, "User": User}
 class FileStorage():
     """class that serializes\deserialize instances to a JSON """
 
-    path = "file.json"
     __file_path = path
     __objects = {}
-    kryptix = ''
 
     def all(self):
         """returns the dictionary __objects"""
@@ -35,7 +33,7 @@ class FileStorage():
 
         json_objects = {}
 
-        for ob in self.__objects.keys():
+        for ob in self.__objects:
             json_objects[ob] = self.__objects[ob].to_dict()
 
         with open(self.__file_path, 'w') as filex:
@@ -48,7 +46,7 @@ class FileStorage():
             with open(self.__file_path, 'r') as fx:
                 d = json.load(fx)
 
-            for x in d.keys():
+            for x in d:
                 self.__objects[x] = classes[d[x]["__class__"]](**d[x])
 
         except FileNotFoundError:
