@@ -122,7 +122,7 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_quit(self, line):
-        """ quit the programe !!!"""
+        """Quit command to exit the program"""
 
         return True
 
