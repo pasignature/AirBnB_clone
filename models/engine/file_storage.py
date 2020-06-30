@@ -13,7 +13,7 @@ classes = {"BaseModel": BaseModel, "User": User}
 class FileStorage():
     """class that serializes\deserialize instances to a JSON """
 
-    __file_path = path
+    __file_path = 'file.json'
     __objects = {}
 
     def all(self):
