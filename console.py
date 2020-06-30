@@ -2,26 +2,31 @@
 """
 BETA VERSION The console: contains the entry point of the command interpreter
 """
- 
+
 import cmd
 from models.base_model import BaseModel
+from models.user import User
 import models
 import json
+
 
 class HBNBCommand(cmd.Cmd):
     """Simple command processor example."""
 
     intro = 'Welcome to the Airbnb console\n'
-    prompt = '(hbnb)' 
-    
+    prompt = '(hbnb)'
+    cstr = ['BaseModel', 'User']
+    csob = [BaseModel, User]
+
     def do_create(self, class_name):
         """create a new instance of Base model"""
         if class_name == '':
             print("** class name missing **")
-        elif class_name not in ['BaseModel', 'mahdi', 'Baha']:
+        elif class_name not in self.cstr:
             print("** class doesn't exist **")
         else:
-            ob = BaseModel()
+            classin = class_name
+            ob = self.csob[HBNBCommand.cstr.index(class_name)]()
             models.storage.new(ob)
             models.storage.save()
             print(ob.id)
@@ -31,18 +36,16 @@ class HBNBCommand(cmd.Cmd):
 
         path = 'file.json'
         dico = {}
-        
         parse = wline.split(' ')
+
         if len(parse) == 1:
             if parse[0] == '':
                 print("** class name missing **")
-            elif parse[0] not in ['BaseModel']:
+            elif parse[0] not in HBNBCommand.cstr:
                 print("** class doesn't exist **")
             else:
                 print("** instance id missing **")
         else:
-            #dico est optionnel, on a pu utiliser directement le dictionnaire 
-            #venant de la méthode all()
             dico = models.storage.all()
             keyx = parse[0] + '.' + parse[1]
             if keyx in dico:
@@ -58,7 +61,7 @@ class HBNBCommand(cmd.Cmd):
         if len(parse) == 1:
             if parse[0] == '':
                 print("** class name missing **")
-            elif parse[0] not in ['BaseModel']:
+            elif parse[0] not in HBNBCommand.cstr:
                 print("** class doesn't exist **")
             else:
                 print("** instance id missing **")
@@ -73,30 +76,31 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, wline):
         """Prints all string representation of all instances"""
 
-        l = []                
+        l = []
         c = wline.split(' ')
         if c[0]:
-            for k in models.storage.all().keys():
-                if k.split('.')[0] == c[0]:
-                    l.append(str(models.storage.all()[k]))
-                    
-                else:
-                    print("** class doesn't exist **")
-                    break
+            if c[0] not in HBNBCommand.cstr:
+                print("** class doesn't exist **")
+            else:
+                for k in models.storage.all().keys():
+                    if k.split('.')[0] == c[0]:
+                        l.append(models.storage.all()[k])
+
         else:
             for k in models.storage.all().keys():
-                l.append(str(models.storage.all()[k]))   
+                l.append(models.storage.all()[k])
+                
         if l:
-            print(l)
-            l.clear()
+            print([str(item) for item in l])
+        l.clear()
 
     def do_update(self, wline):
         """Updates an instance based on the class name"""
-    
+
         parse = wline.split(' ')
         if parse[0] == '':
             print("** class name missing **")
-        elif parse[0] and parse[0] not in ['BaseModel', 'Mahdi']:
+        elif parse[0] and parse[0] not in HBNBCommand.cstr:
             print("** class doesn't exist **")
         elif len(parse) == 1:
             print("** instance id missing **")
@@ -108,20 +112,24 @@ class HBNBCommand(cmd.Cmd):
             print("** value missing **")
         else:
             k = parse[0] + '.' + parse[1]
-            dct = models.storage.all() 
+            dct = models.storage.all()
             parse[3] = parse[3].strip("'")
             setattr(dct[k], parse[2], parse[3].strip('"'))
             models.storage.save()
- 
+
     def do_EOF(self, line):
         """End of file"""
         print("ok bye!")
+
         return True
+
     def do_now(self, line):
         """execute command now"""
         print("################")
+
     def do_quit(self, line):
         """ quit the programe !!!"""
+
         return True
 
 if __name__ == '__main__':
