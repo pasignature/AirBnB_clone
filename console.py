@@ -4,10 +4,16 @@ BETA VERSION The console: contains the entry point of the command interpreter
 """
 
 import cmd
-from models.base_model import BaseModel
-from models.user import User
 import models
 import json
+from models import storage
+from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.city import City
+from models.place import Place
+from models.amenity import Amenity
+from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
@@ -15,8 +21,8 @@ class HBNBCommand(cmd.Cmd):
 
     #intro = 'Welcome to the Airbnb console\n'
     prompt = '(hbnb)'
-    cstr = ['BaseModel', 'User']
-    csob = [BaseModel, User]
+    cstr = ['BaseModel', 'User', 'State', 'City', 'Amenity', 'Place', 'Review']
+    csob = [BaseModel, User, State, City, Amenity, Place, Review]
 
     def do_create(self, class_name):
         """create a new instance of Base model"""
