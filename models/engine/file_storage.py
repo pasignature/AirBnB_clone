@@ -106,8 +106,7 @@ class FileStorage():
                 d = json.load(fx)
 
             for x in d.keys():
-                #self.__objects[x] = classes[d[x]["__class__"]](**d[x])
-                self.__objects[x] = FileStorage.cll[FileStorage.strx.index(x.split('.')[0])](**d[x])
+                self.__objects[x] = classes[d[x]["__class__"]](**d[x])
 
         except FileNotFoundError:
             pass
