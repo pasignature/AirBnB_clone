@@ -47,3 +47,6 @@ class TestFileStorage(unittest.TestCase):
 
     def test_Data_Encapsulation(self):
         self.assertIsNone(self.engine.new(self.ob))
+
+    def test_new_method(self):
+        self.assertIsNone(self.engine.new(self.ob))
