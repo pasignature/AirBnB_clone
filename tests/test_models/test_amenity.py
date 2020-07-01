@@ -14,3 +14,7 @@ class TestAmenity(unittest.TestCase):
 
     def test_instantiation(self):
         self.assertEqual(Amenity, type(Amenity()))
+
+
+if __name__ == "__main__":
+    unittest.main()

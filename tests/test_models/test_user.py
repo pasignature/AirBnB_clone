@@ -21,3 +21,7 @@ class TestUser(unittest.TestCase):
         self.assertTrue(hasattr(user, "id"))
         self.assertTrue(hasattr(user, "created_at"))
         self.assertTrue(hasattr(user, "updated_at"))
+
+
+if __name__ == "__main__":
+    unittest.main()

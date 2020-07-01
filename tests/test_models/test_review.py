@@ -14,3 +14,6 @@ class TestReview_instantiation(unittest.TestCase):
 
     def test_no_args_instantiates(self):
         self.assertEqual(Review, type(Review()))
+
+if __name__ == "__main__":
+    unittest.main()

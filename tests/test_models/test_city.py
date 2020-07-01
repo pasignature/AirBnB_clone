@@ -18,3 +18,6 @@ class TestCity_ins(unittest.TestCase):
 
     def test_instantiation(self):
         self.assertEqual(City, type(City()))
+
+if __name__ == "__main__":
+    unittest.main()

@@ -14,3 +14,6 @@ class TestPlace_instantiation(unittest.TestCase):
 
     def test_instantiation(self):
         self.assertEqual(Place, type(Place()))
+
+if __name__ == "__main__":
+    unittest.main()

@@ -14,3 +14,6 @@ class TestState_instantiation(unittest.TestCase):
 
     def test_class_instantiation(self):
         self.assertEqual(State, type(State()))
+
+if __name__ == "__main__":
+    unittest.main()
