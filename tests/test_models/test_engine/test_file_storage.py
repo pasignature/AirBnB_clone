@@ -45,6 +45,9 @@ class TestFileStorage(unittest.TestCase):
         k = ob1.__class__.__name__ + '.' + ob1.id
         self.assertTrue(d[k])
 
+    def test_FileStorage_object(self):
+        self.assertNotEqual(type(FileStorage()), self.engine)
+
     def test_Data_Encapsulation(self):
         self.assertIsNone(self.engine.new(self.ob))
 
