@@ -5,9 +5,15 @@ FileStorage class file
 from models.base_model import BaseModel
 from models.user import User
 import json
+from models.state import State
+from models.city import City
+from models.place import Place
+from models.amenity import Amenity
+from models.review import Review
 import models
 
-classes = {"BaseModel": BaseModel, "User": User}
+classes = {"Amenity": Amenity, "BaseModel": BaseModel, "City": City,
+           "Place": Place, "Review": Review, "State": State, "User": User}
 
 
 class FileStorage():
@@ -27,8 +33,8 @@ class FileStorage():
     __objects = {}
 
     kryptix = ''
-    cll = [BaseModel, User]
-    strx = ['BaseModel', 'User']
+    cll = [BaseModel, User, State, City, Amenity, Place, Review]
+    strx = ['BaseModel', 'User', 'State', 'City', 'Amenity', 'Place', 'Review']
 
     def all(self):
         """
