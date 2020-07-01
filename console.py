@@ -120,8 +120,7 @@ class HBNBCommand(cmd.Cmd):
                 #print('no')
                 parse[3] = parse[3].strip("'")
                 setattr(dct[k], parse[2], parse[3].strip('"'))
-                #models.storage.save()
-                models.storage.all()[k].save()
+                models.storage.save()
 
     def do_EOF(self, line):
         """End of file"""
