@@ -90,7 +90,8 @@ class HBNBCommand(cmd.Cmd):
             for k in models.storage.all().keys():
                 l.append(models.storage.all()[k])
         if l:
-            print([str(item) for item in l])
+            #print([str(item) for item in l])
+            print([item.__str__() for item in l])
         l.clear()
 
     def do_update(self, wline):
