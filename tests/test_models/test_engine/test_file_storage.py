@@ -60,3 +60,6 @@ class TestFileStorage(unittest.TestCase):
 
     def test_engine_dictionnairy(self):
         self.assertEqual(dict, type(self.engine._FileStorage__objects))
+
+if __name__ == "__main__":
+    unittest.main()
