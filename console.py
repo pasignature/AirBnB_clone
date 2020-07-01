@@ -100,6 +100,27 @@ class HBNBCommand(cmd.Cmd):
             print([item.__str__() for item in l])
         l.clear()
 
+    def default(self, wline):
+        """commande line argument parsing"""
+        ob = storage.all().keys()
+        wline = wline.replace("(", ".").replace(")", ".")
+        wline = wline.replace(", ", ".")
+        wline = wline.split(".")
+
+        if wline[1] == "all":
+            self.do_all(wline[0])
+        elif wline[1] == "count":
+            print(len(ob))
+        elif wline[1] == "show":
+            key = wline[0] + " " + wline[2]
+            self.do_show(key)
+        elif wline[1] == "destroy":
+            key = wline[0] + " " + wline[2]
+            self.do_destroy(key)
+        elif wline[1] == "update":
+            key = wline[0] + " " + wline[2] + " " + wline[3] + " " + wline[4]
+            self.do_update(key)
+
     def do_update(self, wline):
         """Updates an instance based on the class name"""
 
