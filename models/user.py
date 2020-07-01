@@ -7,7 +7,17 @@ from models.base_model import BaseModel
 
 
 class User(BaseModel):
-    """a cclass User that inherits from BaseModel"""
+    """
+    ------------------
+    CLASS: User
+    DESCRIPTION:
+             a class User that inherits from BaseModel
+    ------------------
+    """
+
+    # ------------------------------- #
+    #       PUBLIC ATTRIBUTES         #
+    # ------------------------------- #
 
     email = ''
     password = ''
