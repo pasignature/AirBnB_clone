@@ -26,6 +26,10 @@ class FileStorage():
     #objects dictionary where to save
     __objects = {}
 
+    kryptix = ''
+    cll = [BaseModel, User]
+    strx = ['BaseModel', 'User']
+
     def all(self):
         """
         ---------------------------
@@ -56,6 +60,7 @@ class FileStorage():
         if obj is not None:
             keyx = obj.__class__.__name__ + "." + obj.id
             self.__objects[keyx] = obj
+            FileStorage.kryptix = obj.__class__.__name__
 
     def save(self):
         """
@@ -94,8 +99,9 @@ class FileStorage():
             with open(self.__file_path, 'r') as fx:
                 d = json.load(fx)
 
-            for x in d:
-                self.__objects[x] = classes[d[x]["__class__"]](**d[x])
+            for x in d.keys():
+                #self.__objects[x] = classes[d[x]["__class__"]](**d[x])
+                self.__objects[x] = FileStorage.cll[FileStorage.strx.index(x.split('.')[0])](**lo[x])y
 
         except FileNotFoundError:
             pass
