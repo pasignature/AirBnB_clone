@@ -25,13 +25,22 @@ class TestFileStorage(unittest.TestCase):
         self.ob = BaseModel()
         #self.engine.new(self.ob)
         #self.key = self.ob.__class__.__name__ + '.' + self.obj.id
+        d = FileStorage._FileStorage__objects
+        dd = {}
 
     def test_no_arg(self):
         self.assertIsNone(self.engine.new(self.ob))
-   
+
     def test_all(self):
         self.assertEqual(dict, type(self.engine.all()))
 
     def test_FileStorage_instantiation_with_arg(self):
         with self.assertRaises(TypeError):
             FileStorage(None)
+
+    def test_new(self):
+        d = FileStorage._FileStorage__objects
+        ob1 = BaseModel()
+        self.engine.new(ob1)
+        k = ob1.__class__.__name__ + '.' + ob1.id
+        self.assertTrue(d[k])
