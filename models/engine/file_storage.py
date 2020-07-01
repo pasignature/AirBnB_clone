@@ -101,7 +101,7 @@ class FileStorage():
 
             for x in d.keys():
                 #self.__objects[x] = classes[d[x]["__class__"]](**d[x])
-                self.__objects[x] = FileStorage.cll[FileStorage.strx.index(x.split('.')[0])](**lo[x])y
+                self.__objects[x] = FileStorage.cll[FileStorage.strx.index(x.split('.')[0])](**d[x])
 
         except FileNotFoundError:
             pass
