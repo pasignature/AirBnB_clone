@@ -5,34 +5,33 @@ Contains the TestFileStorageDocs classes
 
 from datetime import datetime
 import inspect
-from models.engine import file_storage
+from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 from models.user import User
 import json
 import os
 import pep8
 import unittest
-FileStorage = file_storage.FileStorage
+#FileStorage = file_storage.FileStorage
 classes = {"BaseModel": BaseModel, "User": User}
 
 
-class TestFileStorage_instantiation(unittest.TestCase):
-    """Unittests for testing instantiation of the FileStorage class."""
+class TestFileStorage(unittest.TestCase):
 
-    def test_FileStorage_instantiation_no_args(self):
-        self.assertEqual(type(FileStorage()), FileStorage)
+    @classmethod
+    def setUpClass(self):
+        """"""
+        self.engine = FileStorage()
+        self.ob = BaseModel()
+        #self.engine.new(self.ob)
+        #self.key = self.ob.__class__.__name__ + '.' + self.obj.id
+
+    def test_no_arg(self):
+        self.assertIsNone(self.engine.new(self.ob))
+   
+    def test_all(self):
+        self.assertEqual(dict, type(self.engine.all()))
 
     def test_FileStorage_instantiation_with_arg(self):
         with self.assertRaises(TypeError):
             FileStorage(None)
-
-    def test_FileStorage_file_path_is_private_str(self):
-        self.assertEqual(str, type(FileStorage._FileStorage__file_path))
-
-    def testFileStorage_objects_is_private_dict(self):
-        self.assertEqual(dict, type(FileStorage._FileStorage__objects))
-
-    def test_storage_initializes(self):
-        self.assertEqual(type(models.storage), FileStorage)
-
- 
