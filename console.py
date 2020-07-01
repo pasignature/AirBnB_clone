@@ -112,9 +112,15 @@ class HBNBCommand(cmd.Cmd):
         else:
             k = parse[0] + '.' + parse[1]
             dct = models.storage.all()
-            parse[3] = parse[3].strip("'")
-            setattr(dct[k], parse[2], parse[3].strip('"'))
-            models.storage.save()
+            if type(parse[3]) is int:
+                dct[k][parse[2]] = int(parse[3])
+                dct[k][parse[2]] = int(dct[k][parse[2]]) + 2
+                #setattr(dct[k], parse[2], int(parse[3].strip('"')))
+            else:
+                #print('no')
+                parse[3] = parse[3].strip("'")
+                setattr(dct[k], parse[2], parse[3].strip('"'))
+                models.storage.save()
 
     def do_EOF(self, line):
         """End of file"""
