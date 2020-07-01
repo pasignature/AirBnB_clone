@@ -51,6 +51,8 @@ class HBNBCommand(cmd.Cmd):
                 print("** class doesn't exist **")
             else:
                 print("** instance id missing **")
+        elif parse[0] not in HBNBCommand.cstr:
+            print("** class doesn't exist **")
         else:
             dico = models.storage.all()
             keyx = parse[0] + '.' + parse[1]
@@ -71,6 +73,9 @@ class HBNBCommand(cmd.Cmd):
                 print("** class doesn't exist **")
             else:
                 print("** instance id missing **")
+
+        elif parse[0] not in HBNBCommand.cstr:
+            print("** class doesn't exist **")
         else:
             keyx = parse[0] + '.' + parse[1]
             if keyx in models.storage.all():
