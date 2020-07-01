@@ -27,7 +27,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             classin = class_name
             ob = self.csob[HBNBCommand.cstr.index(class_name)]()
-            models.storage.new(ob)
+            #models.storage.new(ob)
             models.storage.save()
             print(ob.id)
 
