@@ -139,9 +139,10 @@ class HBNBCommand(cmd.Cmd):
         if wline[1] == "all":
             self.do_all(wline[0])
         elif wline[1] == "count":
-            for i in storage.all():
-                objects += 1
-            print(objects)
+            nb_objects = 0
+            for i in storage.all().keys():
+                nb_objects += 1
+            print(nb_objects)
         elif wline[1] == "show":
             key = wline[0] + " " + wline[2]
             self.do_show(key)
