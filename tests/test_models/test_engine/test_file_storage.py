@@ -61,5 +61,26 @@ class TestFileStorage(unittest.TestCase):
     def test_engine_dictionnairy(self):
         self.assertEqual(dict, type(self.engine._FileStorage__objects))
 
+
+class TestFileStorage_instantiation(unittest.TestCase):
+    """Unittests the FileStorage class."""
+
+    def test_FileStorage_i(self):
+        self.assertEqual(type(FileStorage()), FileStorage)
+
+    def test_FileStorage_j(self):
+        with self.assertRaises(TypeError):
+            FileStorage(None)
+
+    def test_FileStorage_type_file_path(self):
+        self.assertEqual(str, type(FileStorage._FileStorage__file_path))
+
+    def testFileStorage_objects_is_private_dict(self):
+        self.assertEqual(dict, type(FileStorage._FileStorage__objects))
+
+    def test_storage_initializes(self):
+        self.assertEqual(type(models.storage), FileStorage)
+
+
 if __name__ == "__main__":
     unittest.main()
