@@ -44,3 +44,6 @@ class TestFileStorage(unittest.TestCase):
         self.engine.new(ob1)
         k = ob1.__class__.__name__ + '.' + ob1.id
         self.assertTrue(d[k])
+
+    def test_Data_Encapsulation(self):
+        self.assertIsNone(self.engine.new(self.ob))
