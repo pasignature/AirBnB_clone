@@ -50,3 +50,10 @@ class TestFileStorage(unittest.TestCase):
 
     def test_new_method(self):
         self.assertIsNone(self.engine.new(self.ob))
+
+    def test_all(self):
+        self.assertEqual(dict, type(self.engine.all()))
+
+    def test_all_with_arg(self):
+        with self.assertRaises(TypeError):
+            self.engine.all(None)
