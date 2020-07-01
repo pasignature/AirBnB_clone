@@ -27,7 +27,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             classin = class_name
             ob = self.csob[HBNBCommand.cstr.index(class_name)]()
-            #models.storage.new(ob)
+            models.storage.new(ob)
             models.storage.save()
             print(ob.id)
 
@@ -120,7 +120,8 @@ class HBNBCommand(cmd.Cmd):
                 #print('no')
                 parse[3] = parse[3].strip("'")
                 setattr(dct[k], parse[2], parse[3].strip('"'))
-                models.storage.save()
+                #models.storage.save()
+                models.storage.all()[k].save()
 
     def do_EOF(self, line):
         """End of file"""
