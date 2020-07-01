@@ -13,7 +13,7 @@ class TestReview_instantiation(unittest.TestCase):
     """testing classinstantiation the class."""
 
     def test_subclass(self):
-        self.assertNotEqual(Review, type(Review()))
+        self.assertEqual(Review, type(Review()))
 
     def test_ids_generation(self):
         instance1 = Review()
