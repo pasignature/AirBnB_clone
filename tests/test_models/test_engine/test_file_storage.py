@@ -50,19 +50,6 @@ class TestFileStorage_instantiation(unittest.TestCase):
     def test_FileStorage_standard_instantiation(self):
         self.assertEqual(type(FileStorage()), FileStorage)
 
-    def test_FileStorage_instnatiation_arg(self):
-        with self.assertRaises(TypeError):
-            FileStorage(None)
-
-    def test_FileStorage_Privacy_file_path(self):
-        self.assertEqual(str, type(FileStorage._FileStorage__file_path))
-
-    def testFileStorage_provacy_obj_dict(self):
-        self.assertEqual(dict, type(FileStorage._FileStorage__objects))
-
-    def test_storage_initializes(self):
-        self.assertEqual(type(models.storage), FileStorage)
-
-
+ 
 if __name__ == "__main__":
     unittest.main()
